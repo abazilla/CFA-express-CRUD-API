@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  
+  a(href='/api') API
+
+  form(action="/", method="post")
+    input(type="text", name="ingredient_name")
+    input(type="submit")
+
+  ul
+    - ingredients.forEach(ingredient => {
+      li= ingredient.name 
+      a(href='/ingredients/' + ingredient._id + '/edit') Edit 
+      
+      a(href='/ingredients/' + ingredient._id + '/destroy') Destroy
+    - })
